@@ -8,7 +8,7 @@ class Alien(Sprite):
         """Initialize the alien and set its starting position"""
         super().__init__()
         self.screen = ai_game.screen
-
+        self.settings = ai_game.settings
         # Load the alien image and set its rect attribute
         self.image = pygame.image.load('images/alien.bmp')
         self.rect = self.image.get_rect()
@@ -29,3 +29,4 @@ class Alien(Sprite):
     def update(self):
         """Move the alien right or left"""
         self.x += (self.settings.alien_speed * self.settings.fleet_direction)
+        self.rect.x = self.x 
