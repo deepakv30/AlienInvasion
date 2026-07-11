@@ -1,6 +1,8 @@
 """Tests for the Alien class."""
 
-from alien import Alien
+import pygame
+
+from alien_invasion.sprites import Alien
 
 
 class TestAlien:
@@ -28,8 +30,6 @@ class TestAlien:
     def test_check_edges_false_when_in_center(self, game_context):
         alien = Alien(game_context)
         screen_rect = game_context.screen.get_rect()
-        alien.rect.centerx = screen_rect.centerx
-        alien.rect.left = max(1, alien.rect.left)
         # Place clearly away from both edges
         alien.rect.x = screen_rect.width // 2
         assert not alien.check_edges()
@@ -46,6 +46,5 @@ class TestAlien:
         assert alien.check_edges() is True
 
     def test_is_sprite(self, game_context):
-        import pygame
         alien = Alien(game_context)
         assert isinstance(alien, pygame.sprite.Sprite)

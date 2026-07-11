@@ -4,8 +4,7 @@ import pygame
 import pytest
 
 from alien_invasion import AlienInvasion
-from bullet import Bullet
-from alien import Alien
+from alien_invasion.sprites import Alien, Bullet
 
 
 class TestAlienInvasionInit:
@@ -51,7 +50,6 @@ class TestUpdateBullets:
     def test_removes_bullets_off_top_of_screen(self, game):
         game._fire_bullet()
         bullet = game.bullets.sprites()[0]
-        # Place bullet fully above the screen
         bullet.y = -100
         bullet.rect.y = -100
         game._update_bullets()
@@ -77,7 +75,6 @@ class TestFleet:
 
     def test_check_fleet_edges_changes_direction_at_edge(self, game):
         game.settings.fleet_direction = 1
-        # Push one alien to the right edge
         alien = game.aliens.sprites()[0]
         alien.rect.right = game.screen.get_rect().right
         game._check_fleet_edges()
@@ -87,8 +84,6 @@ class TestFleet:
         xs_before = [a.x for a in game.aliens.sprites()]
         game._update_aliens()
         xs_after = [a.x for a in game.aliens.sprites()]
-        # At least one alien should have moved (unless immediately on edge
-        # and only dropped — still positions change via drop or horizontal).
         assert xs_before != xs_after or any(
             a.rect.y for a in game.aliens.sprites()
         )
@@ -138,8 +133,7 @@ class TestCollisions:
 
 class TestKeyEvents:
     def _event(self, key, event_type=pygame.KEYDOWN):
-        event = pygame.event.Event(event_type, key=key)
-        return event
+        return pygame.event.Event(event_type, key=key)
 
     def test_keydown_right_sets_flag(self, game):
         game._check_keydown_events(self._event(pygame.K_RIGHT))

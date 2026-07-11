@@ -1,6 +1,6 @@
 """Tests for the Settings class."""
 
-from settings import Settings
+from alien_invasion.settings import Settings
 
 
 class TestSettings:

@@ -11,9 +11,9 @@ os.environ.setdefault("SDL_VIDEODRIVER", "dummy")
 import pytest
 import pygame
 
-from settings import Settings
-from ship import Ship
 from alien_invasion import AlienInvasion
+from alien_invasion.settings import Settings
+from alien_invasion.sprites import Ship
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -45,6 +45,7 @@ def game_context(settings, screen):
     Provides the attributes those classes expect from AlienInvasion without
     constructing the full game (fleet, fullscreen, etc.).
     """
+
     class GameContext:
         pass
 
@@ -66,8 +67,8 @@ def game(monkeypatch):
     original_set_mode = pygame.display.set_mode
 
     def windowed_set_mode(*args, **kwargs):
-        settings = Settings()
-        return original_set_mode((settings.screen_width, settings.screen_height))
+        cfg = Settings()
+        return original_set_mode((cfg.screen_width, cfg.screen_height))
 
     monkeypatch.setattr(pygame.display, "set_mode", windowed_set_mode)
     return AlienInvasion()

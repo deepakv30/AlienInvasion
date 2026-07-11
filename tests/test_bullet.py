@@ -2,7 +2,7 @@
 
 import pygame
 
-from bullet import Bullet
+from alien_invasion.sprites import Bullet
 
 
 class TestBullet:

@@ -4,25 +4,19 @@ A classic space shooter game built with **Python** and **Pygame**.
 
 This project was developed as a hands-on learning exercise to practice object-oriented programming, game loops, collision detection, and event handling in Python.
 
-## 🎯 Features
+## Features
 
 - Player-controlled spaceship with movement and shooting
 - Multiple enemy aliens that move and descend
 - Collision detection between bullets and aliens
-- Score tracking system
-- Game over screen when aliens reach the bottom
-- Increasing difficulty as the game progresses
+- Fleet edge detection and direction changes
 
-## 🔧 Requirements
+## Requirements
 
 - Python 3.8 or higher
-- Pygame library
+- Pygame
 
-```bash
-pip install pygame
-```
-
-## 🚀 How to Run
+## How to Run
 
 1. Clone the repository:
    ```bash
@@ -30,44 +24,70 @@ pip install pygame
    cd AlienInvasion
    ```
 
-2. Install dependencies:
+2. Create a virtual environment and install dependencies:
    ```bash
-   pip install pygame
+   python -m venv .venv
+   source .venv/bin/activate   # Windows: .venv\Scripts\activate
+   pip install -r requirements.txt
    ```
 
 3. Run the game:
    ```bash
-   python alien_invasion.py
+   python -m alien_invasion
    ```
 
-## 🎮 Controls
+## Controls
 
-| Key          | Action              |
-|--------------|---------------------|
-| Right Arrow  | Move ship right     |
-| Left Arrow   | Move ship left      |
-| Spacebar     | Shoot bullet        |
-| Q            | Quit the game       |
+| Key          | Action          |
+|--------------|-----------------|
+| Right Arrow  | Move ship right |
+| Left Arrow   | Move ship left  |
+| Spacebar     | Shoot bullet    |
+| Q            | Quit the game   |
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 AlienInvasion/
-├── alien_invasion.py     # Main game file
-├── settings.py           # Game settings and constants
-├── ship.py               # Player ship class
-├── alien.py              # Alien class
-├── bullet.py             # Bullet class
-├── game_stats.py         # Game statistics
-├── scoreboard.py         # Score display
+├── alien_invasion/           # Main game package
+│   ├── __init__.py
+│   ├── __main__.py           # python -m alien_invasion
+│   ├── game.py               # Game loop and coordination
+│   ├── settings.py           # Tunable settings
+│   ├── paths.py              # Asset path helpers
+│   ├── sprites/              # Sprite classes
+│   │   ├── __init__.py
+│   │   ├── ship.py
+│   │   ├── alien.py
+│   │   └── bullet.py
+│   └── images/               # Game art assets
+│       ├── ship.bmp
+│       └── alien.bmp
+├── tests/                    # Pytest suite
+│   ├── conftest.py
+│   ├── test_game.py
+│   ├── test_settings.py
+│   ├── test_ship.py
+│   ├── test_alien.py
+│   └── test_bullet.py
+├── requirements.txt
+├── pyproject.toml
 └── README.md
 ```
 
-## 📝 Disclaimer
+## Testing
+
+```bash
+pytest -v
+```
+
+Tests use pygame's dummy video driver and run without a display (including in CI).
+
+## Disclaimer
 
 This project was created **solely for learning and educational purposes**. It is based on concepts from the book *Python Crash Course* by Eric Matthes.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Inspired by *Python Crash Course* by Eric Matthes
 - Built using the Pygame library

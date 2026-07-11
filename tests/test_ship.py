@@ -1,6 +1,6 @@
 """Tests for the Ship class."""
 
-from ship import Ship
+from alien_invasion.sprites import Ship
 
 
 class TestShip:
