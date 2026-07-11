@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alien-invasion"
+version = "0.1.0"
+description = "A classic space shooter game built with Python and Pygame"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "pygame>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "flake8",
+]
+
+[project.scripts]
+alien-invasion = "alien_invasion.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["alien_invasion*"]
+
+[tool.setuptools.package-data]
+alien_invasion = ["images/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
