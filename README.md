@@ -1,5 +1,8 @@
 # Alien Invasion 🚀
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
+
 A classic space shooter game built with **Python** and **Pygame**.
 
 This project was developed as a hands-on learning exercise to practice object-oriented programming, game loops, collision detection, and event handling in Python.
@@ -72,8 +75,18 @@ AlienInvasion/
 │   └── test_bullet.py
 ├── requirements.txt
 ├── pyproject.toml
+├── LICENSE                    # MIT
+├── SECURITY.md
 └── README.md
 ```
+
+## License
+
+MIT License — see the [LICENSE](LICENSE) file for details.
+
+## Security
+
+See [SECURITY.md](SECURITY.md) for how to report vulnerabilities.
 
 ## Testing
 
